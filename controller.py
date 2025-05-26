@@ -5,33 +5,33 @@ class TodoController:
         self.model = model
         self.view = view
 
-    def run(self):
+    def run(self) -> None:
         while True:
             menu_item = self.view.get_menu_item()
 
-            if menu_item == "1":
+            if menu_item == 1:
                 self.view.show_list(self.model.get_list())
 
-            elif menu_item == "2":
+            elif menu_item == 2:
                 name_task, description_task, category_task, priority_task = self.view.ask_for_new_task()
                 self.model.add_to_list(name_task, description_task, category_task, priority_task)
 
-            elif menu_item == "3":
-                number = self.view.ask_for_completed()
-                result = self.model.mark_complete(number)
-                self.view.respond_for_completed(result, number)
+            elif menu_item == 3:
+                id = self.view.ask_for_completed()
+                result = self.model.mark_complete(id)
+                self.view.respond_for_completed(result, id)
 
-            elif menu_item == "4":
-                number = self.view.ask_for_not_completed()
-                result = self.model.mark_not_complete(number)
-                self.view.respond_for_not_completed(result, number)
+            elif menu_item == 4:
+                id = self.view.ask_for_not_completed()
+                result = self.model.mark_not_complete(id)
+                self.view.respond_for_not_completed(result, id)
 
-            elif menu_item == "5":
-                number = self.view.ask_for_delete()
-                result = self.model.delete_task(number)
-                self.view.respond_for_delete(result, number)
+            elif menu_item == 5:
+                id = self.view.ask_for_delete()
+                result = self.model.delete_task(id)
+                self.view.respond_for_delete(result, id)
 
-            elif menu_item == "6":
+            elif menu_item == 6:
                 break
 
             else:
